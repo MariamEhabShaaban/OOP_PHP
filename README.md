@@ -216,7 +216,7 @@
     ```
     
 
-# Self  **`*VS*`** $this
+# Self  **`VS`** $this
 
 - 
     - `self` ⇒ refers to current class and access static members ( constant ) ,don’t need $ because it is not represent variable but represent class construction
