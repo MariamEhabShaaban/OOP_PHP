@@ -1,4 +1,4 @@
-# <a href="https://mirage-joggers-141.notion.site/OOP_PHP-18f4e5b8ea4a80ea8773ea3a2d5ab267?pvs=4">Task_on_Notion</a>
+# <a href="https://mirage-joggers-141.notion.site/OOP_PHP-18f4e5b8ea4a80ea8773ea3a2d5ab267?pvs=4">Notion</a>
 # What is OOP?
 
 - OOP ( Object Oriented Programming ):
@@ -216,7 +216,7 @@
     ```
     
 
-# Self  **`VS`** $this
+# Self  **`*VS*`** $this
 
 - 
     - `self` ⇒ refers to current class and access static members ( constant ) ,don’t need $ because it is not represent variable but represent class construction
@@ -553,6 +553,7 @@
         
     3. `__call()` :
         - method is invoked automatically when a non-existing method or inaccessible method is called
+        - can be used to achieve overloading
         - accept two parameters ⇒ method name  and its parameters
         
         ```php
@@ -568,7 +569,33 @@
         }
         $app=new Device();
         $app->hi("mariam");  // output Function hi not exist or not accessible
-        $app->say_hello("mariam");// output Function say_hello not exist or not accessible**
+        $app->say_hello("mariam");// output Function say_hello not exist or not accessible
+        
+        ///////////////////////  overloading  /////////////////////////////////
+        
+        class shape{
+           public function __call($fun_name,$params){
+              if($fun_name=='area'){
+               $cnt=count($params);
+               switch($cnt){
+                 case 1:
+                    $a= 3.14*$params[0]*$params[0];
+                    echo 'area of circle ='.$a.'<br>';
+                    break;
+                 case 2:
+                  $a=  $params[0]*$params[1];
+                  echo 'area of rectangle ='.$a.'<br>';
+                    break;
+               }
+        
+              }
+           }
+        }
+        
+        $obj=new shape();
+         $obj->area(5,6); // area of rectangle =30
+         $obj->area(5); // area of circle =78.5**
+        
         ```
         
     4. `__get()` & `__set()` :
@@ -1071,8 +1098,9 @@
     
     - create folder and create in it all classes each class in file and name the file same name of class in this file
         
-     ![image](https://github.com/user-attachments/assets/1458bf17-35c9-4a2a-818e-516f33eaa5a3)
+    ![image](https://github.com/user-attachments/assets/24bbcd0d-8fb4-4287-8fee-c8952bdecaa6)
 
+        
     
     ```php
     **<?php
